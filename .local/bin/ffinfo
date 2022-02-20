@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+ffprobe -show_streams -print_format json $1 2>/dev/null | jq '.streams[] | select(.codec_type == "video")'
+

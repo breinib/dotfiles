@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# use for commdand line only
+#read -p "Please specify your YouTube link >>  " URL
+#read -p "How long should the clip be?   >>  " laufz
+#read -p "When should the clip start?    >>  " beginn
+
+# dmenu specific
+URL=$(xclip -o -c Selection)
+laufz=$(dmenu -i -p "How long?")
+beginn=$(dmenu -i -p "From when on?")
+name=$(dmenu -i -p "clip name?")
+
+
+/usr/bin/ffmpeg -i $(yt-dlp -f best --get-url "$URL") -t $laufz -ss $beginn $HOME/videos/yt-clips/$name

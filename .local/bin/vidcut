@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "----- Error.
+----- Specified video file missing as parameter. Please set one first!"
+    exit 1
+fi
+
+read -p "How long should the video be?              >>> " laufz
+read -p "After how many seconds start recording?    >>> " beginn
+maxmin="99"
+maxmin2="9999"
+
+
+if [[ $laufz = 1m ]];
+then
+	laufz=$(echo 00:01:00)
+
+elif [[ $laufz > $maxmin ]];
+	then
+		laufz=$(echo 00:00:$laufz)
+
+elif [[ $laufz -lt $maxmin2 ]];
+	then
+		laufz=$(echo 00$laufz)
+		laufz=$(echo $laufz | sed 's/../&:/g;s/:$//')
+		echo $laufz
+
+elif [[ $laufz -gt 9999 ]];
+	then
+		laufz=$(echo $laufz | sed 's/../&:/g;s/:$//')
+		echo $laufz
+fi
+inputfile=$1
+
+ffmpeg -i $inputfile -vcodec copy -acodec copy -t $laufz -ss $beginn videocut.${inputfile##*.}

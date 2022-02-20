@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+ffmpeg -i $1 -vf "drawtext=text='$2':fontfile=/usr/share/fonts/TTF/Arial.TTF:fontcolor=white:fontsize=h/8:x=(w-text_w)/2:y=50:borderw=10:bordercolor=black,drawtext=text='$3':fontsize=h/8:x=(w-text_w)/2:y=(h-text_h-50)/1:fontfile=/usr/share/fonts/TTF/Arial.TTF:fontcolor=white:borderw=10:bordercolor=black" $4
+
+

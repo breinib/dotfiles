@@ -1,0 +1,11 @@
+#!/bin/bash -x
+
+FFREPORT=file=/home/$USER/documents/[FILENAME].log:level=32 \
+/usr/bin/ffmpeg -y -f x11grab \
+	-s "$(xdpyinfo | grep dimensions | awk '{print $2;}')" \
+	-thread_queue_size 1024 -i "$DISPLAY" \
+	-thread_queue_size 1024 -f alsa -ac 2 -i default -thread_queue_size 1024 -f alsa -ac 2 -i hw:1\
+	-filter_complex "[1:a:0]acompressor=threshold=0.008:ratio=9:attack=200,afftdn=nf=-80[ckout];[ckout][2:a:0]amix=2[aout]" -map 0:V:0 \
+	-map "[aout]" -c:v h264_nvenc -threads 12 \
+	-c:a aac -r 60 "$HOME/t-$(date '+%y%m%d-%H%M-%S').mp4"
+

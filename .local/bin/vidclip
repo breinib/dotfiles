@@ -1,0 +1,3 @@
+#!/bin/bash
+URL=$(xclip -o -c Selection)
+yt-dlp -f best -o "/home/$USER/videos/yt-clips/%(title)s" "$URL"

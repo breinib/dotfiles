@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read -p "How long to fade the video in?    >>>  " fad
+
+ffplay -i $1 -vf "fade=t=in:st=0:d=$fad"

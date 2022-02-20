@@ -1,0 +1,6 @@
+dwmblocks &
+xrandr --dpi 96 &
+st &
+xcompmgr &
+$HOME/changebg &
+while type dwm >/dev/null ; do dwm && continue || break ; done

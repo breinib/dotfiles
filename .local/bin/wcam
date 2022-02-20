@@ -1,0 +1,5 @@
+#!/bin/bash
+i=$1
+ffmpeg -f v4l2 -framerate 90 -video_size 1280x720 -input_format mjpeg -i /dev/video0 -vf "hflip" "$i".mkv
+
+
