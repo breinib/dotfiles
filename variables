@@ -1,0 +1,8 @@
+export EDITOR=nvim
+export HISTFILESIZE=50000
+export HISTSIZE=50000
+export LEDGER_CURRENT_FILE="$HOME/documents/ledger/ledger.dat"
+export LEDGER_FILE="$HOME/documents/ledger/ledger.dat"
+export TERMINAL='st'
+export PATH=$PATH:/home/maxi/.local/bin:/opt/cuda/bin/:/home/maxi
+

@@ -1,0 +1,164 @@
+
+#######################################
+### ############################### ###
+############$$$ALIASES$$$##############
+### ############################### ###
+#######################################
+
+
+#######################################
+# General Shell 
+#######################################
+alias grep='grep --color'
+alias ls='ls --color'
+alias ll='lsd -la'
+alias sl='ls --color'
+alias h='history | fzf'
+alias du='du -hsc'
+alias df='df -h'
+alias cp='cp -iv'
+alias mv='mv -v'
+alias md='mkdir -pv'
+alias rd='rmdir'
+alias gugl='googler -l en -g us'
+alias python='python3'
+alias psg='ps -aux | grep -i'
+mcd() { mkdir -pv $1 && cd $1; }
+
+
+#######################################
+# Local Dictionaries
+#######################################
+alias urban1='sdcv --use-dict UrbanP1'
+alias urban2='sdcv --use-dict UrbanP2'
+ 
+#######################################
+# RSS reader
+#######################################
+alias news='newsboat'
+
+#######################################
+# Video Stuff
+#######################################
+alias yta='yt-dlp -x -f bestaudio/best'
+alias findvid='ytfzf -t'
+alias findody='ytfzf -cO'
+alias copyvid='ytfzf -L'
+alias mpv='mpv --hwdec=auto'
+alias ffmchrom="ffplay -vf 'chromahold=color=FE2E01:similarity=0.4'"
+#alias ytclip="ffmpeg -i -vcodec copy - acodec copy $(yt-dlp -f best --get-url "youtubexyz.com") \ 
+#alias mpvyt="mpv '$(xclip -o -selection clipboard)'"
+
+#######################################
+# TeX CTAN Package Manager
+#######################################
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
+
+#######################################
+# Terminal devours GUI applications
+#######################################
+alias lutris='devour lutris'
+alias pdf='devour zathura'
+alias ff='devour firefox'
+alias gimp='devour gimp'
+alias sxiv='devour sxiv'
+alias inkscape='devour inkscape'
+alias trelby='sudo devour /opt/trelby/bin/trelby'
+alias natron='devour /opt/natron/bin/natron'
+alias audacity='devour audacity'
+alias chromium='devour chromium'
+alias emacs='devour emacs'
+alias web='devour firefox'
+alias wowbc='devour wine $HOME/.local/Games/world-of-warcraft-classic/drive_c/Program\ Files\ \(x86\)/World\ of\ Warcraft/_classic_/WowClassic.exe'
+
+
+#######################################
+# Einfacher dirs wechseln
+#######################################
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+alias ........='cd ../../../../../../..'
+alias .........='cd ../../../../../../../..'
+alias ..........='cd ../../../../../../../../..'
+alias ...........='cd ../../../../../../../../../..'
+alias ............='cd ../../../../../../../../../../..'
+alias .............='cd ../../../../../../../../../../../..'
+
+#######################################
+# Shutdown fast
+#######################################
+alias bye='mpv /home/maxi/.dotfiles/startup/Shutdown.opus & sleep 2;  sudo shutdown -h now'
+
+#######################################
+# Crypto
+#######################################
+alias xmr='curl rate.sx/xmr'
+alias btc='curl rate.sx/btc'
+alias xmr9='curl rate.sx/xmr@90d'
+alias btc9='curl rate.sx/btc@90d'
+alias xmr1='curl rate.sx/xmr@1y'
+alias btc1='curl rate.sx/btc@1y'
+
+
+########################################
+# Ledger
+########################################
+alias ledger='ledger --explicit'
+alias bal='ledger bal -R'
+alias balbit='ledger -R --current --flat bal assets:crypto'
+alias balcash='ledger -R -X EU --current --flat bal assets:cash assets:bank liabilities:credit'
+alias balfid='ledger -R -X EU --current bal assets:fidelity'
+alias balnet='ledger -R -X EU --current --depth 2 bal assets liabilities'
+alias leg='ledger print --tail 5'
+alias reg='ledger reg -R --tail 15'
+
+
+########################################
+# Misc Programs
+########################################
+alias ocr='tesseract -l eng'
+alias ocrde='tesseract -l deu'
+alias anon='PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;32m\]Anon@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ "'
+alias doc2txt="libreoffice --headless --convert-to 'txt:Text (encoded):UTF8'"
+alias mail='neomutt'
+alias booty='sudo reboot -h now'
+alias xclip='xclip -selection c'
+alias csgo='devour steam -options steam://rungameid/730'
+alias steam='devour steam'
+#alias wow='devour wine explorer /desktop=Wow,1280x768 "/home/maxi/.local/Games/world-of-warcraft-classic/drive_c/Program Files (x86)/WoW-Mania-2.9.5/WoW-Mania.exe"'
+alias wow='devour wine "/home/maxi/.local/Games/world-of-warcraft-classic/drive_c/Program Files (x86)/World of Warcraft 3.3.5a/Wow.exe"'
+alias disco='devour ~/downloads/Discord/Discord'
+########################################
+# Editors
+########################################
+alias em="devour emacsclient -c 'emacs'"
+alias realias='vim ~/.dotfiles/aliases; source ~/.dotfiles/aliases'
+alias vi='nvim'
+alias vim='nvim'
+alias ed='cedit'
+
+# Generic extracting
+extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+             *.tar.bz2) tar xjf $1;;
+             *.tar.gz) tar xzf $1;;
+             *.bz2) bunzip2 $1;;
+             *.rar) rar x $1;;
+             *.gz) gunzip $1;;
+             *.tar) tar xf $1;;
+             *.tbz2) tar xjf $1;;
+             *.tgz) tar xzf $1;;
+             *.zip) unzip $1;;
+             *.Z) uncompress $1;;
+             *.7z) 7z x $1;;
+             *) echo "'$1' cannot be extracted via extract()";;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
